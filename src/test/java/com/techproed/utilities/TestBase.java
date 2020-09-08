@@ -21,7 +21,8 @@ public abstract class TestBase {
 
     @AfterClass
     public void tearDown(){
-        //driver.quit();
+        //driver.manage().timeouts().implicitlyWait(10000, TimeUnit.SECONDS);
+       // driver.quit();
     }
 
 }

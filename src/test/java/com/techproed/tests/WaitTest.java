@@ -1,31 +1,35 @@
 package com.techproed.tests;
 
 import com.techproed.utilities.TestBase;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.testng.Assert;
-import org.testng.annotations.Test;
-import org.testng.asserts.Assertion;
-
+        import org.openqa.selenium.By;
+        import org.openqa.selenium.WebElement;
+        import org.openqa.selenium.support.ui.ExpectedConditions;
+        import org.openqa.selenium.support.ui.WebDriverWait;
+        import org.testng.Assert;
+        import org.testng.annotations.Test;
 public class WaitTest extends TestBase {
     @Test
-            public void WaitTest(){
+    public void implicitlyWait(){
         driver.get("http://the-internet.herokuapp.com/dynamic_controls");
-        //<button autocomplete="off" type="button" onclick="swapCheckbox()">Remove</button>
-        WebElement element = driver.findElement(By.xpath("//button[@type='button']"));
-        element.click();
-
-        try {
-            Thread.sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        //It's gone!
-        //WebElement element = driver.findElement(By.xpath("//button[@type='button']"));
-        //  <p id="message">It's gone!</p>
-        WebElement yazi = driver.findElement(By.id("message"));
-        Assert.assertEquals(yazi, "It's gone!");
+        WebElement removeButonu = driver.findElement(By.xpath("//*[.='Remove']"));
+        removeButonu.click();
+        WebElement element = driver.findElement(By.xpath("//*[.='Add']"));
+        Assert.assertTrue(element.isDisplayed());
     }
+    @Test
+    public void explicitWait(){
+        driver.get("http://the-internet.herokuapp.com/dynamic_controls");
+        //Explicit Wait kullanmak için, WebDriverWait class'ından nesne üretmek zorundayız.
+        WebDriverWait wait = new WebDriverWait(driver,30);
 
+
+        WebElement removeButton = driver.findElement(By.xpath("//*[.='Remove']"));
+        removeButton.click();
+
+        WebElement message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("message")));
+        System.out.println(message.getText());
+
+
+
+    }
 }
-

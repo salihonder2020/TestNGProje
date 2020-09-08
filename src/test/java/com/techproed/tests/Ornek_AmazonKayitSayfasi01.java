@@ -29,7 +29,7 @@ public class Ornek_AmazonKayitSayfasi01 extends TestBase { // Day 14 6 Eylul 202
         Assert.assertTrue(driver.getTitle().equals("Amazon Registration"));
     }
 
-    @Test (dependsOnMethods = "test1")
+    @Test (dependsOnMethods = "test01")
     public void test2() {
 
         // <input type="text" maxlength="50" id="ap_customer_name" autocomplete="off" name="customerName" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field auth-contact-verification-request-info">
