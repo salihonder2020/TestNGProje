@@ -23,7 +23,7 @@ public class FhcTripHotelRoomCreateTest extends TestBase {
         giris();
         FhcTripHotelRoomCreatePage page = new FhcTripHotelRoomCreatePage(driver);
         Select select = new Select(page.idHotelDropDown);
-        select.selectByIndex(3);
+        select.selectByIndex(2);
         page.codeKutusu.sendKeys("1234");
         page.nameKutusu.sendKeys("Hamza Yılmaz");
         page.locationKutusu.sendKeys("Almanya");

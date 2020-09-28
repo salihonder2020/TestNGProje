@@ -1,5 +1,6 @@
 package com.techproed.smoketests;
 
+import com.github.javafaker.Faker;
 import com.techproed.pages.GlbSignUpPage;
 import com.techproed.utilities.ConfigurationReader;
 import com.techproed.utilities.Driver;
@@ -29,9 +30,10 @@ public class GlbSignUpTest {
         GlbSignUpPage glbSignUpPage = new GlbSignUpPage();
 
         // * 3. Adım : İçerisine ekleyeceğimiz bilgileri (name, email, phone vs) yine
-        glbSignUpPage.eMail.sendKeys(ConfigurationReader.getProperty("fb_email"));
+        Faker faker = new Faker();
+        glbSignUpPage.eMail.sendKeys(faker.internet().emailAddress());
 
-        glbSignUpPage.isim.sendKeys(ConfigurationReader.getProperty("username"));
+        glbSignUpPage.isim.sendKeys(faker.name().fullName());
 
         glbSignUpPage.telefon.sendKeys(ConfigurationReader.getProperty("telefon"));
 
